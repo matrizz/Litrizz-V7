@@ -3,7 +3,7 @@ Description=Sticker bot - observa pedidos de controle (update/rollback)
 
 [Path]
 DirectoryNotEmpty=@APP_DIR@/data/control/requests
-Unit=Litrizz-V7-control.service
+Unit=litrizzv7-control.service
 
 [Install]
 WantedBy=multi-user.target

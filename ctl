@@ -3,8 +3,8 @@ set -Eeuo pipefail
 SELF="$(readlink -f "${BASH_SOURCE[0]}")"
 cd "$(dirname "$SELF")"
 
-CONTAINER="Litrizz-V7"
-IMAGE="Litrizz-V7"
+CONTAINER="litrizzv7"
+IMAGE="litrizzv7"
 
 log() { printf '[ctl %s] %s\n' "$(date +%H:%M:%S)" "$*"; }
 die() { log "ERRO: $*" >&2; exit 1; }
@@ -234,12 +234,12 @@ cmd_install_systemd() {
   dir="$(pwd)"; user="${SUDO_USER:-$(id -un)}"
   ensure_dirs
   id -nG "$user" | tr ' ' '\n' | grep -qx docker || log "AVISO: '$user' não está no grupo docker (sudo usermod -aG docker $user)"
-  for unit in Litrizz-V7-control.path Litrizz-V7-control.service; do
+  for unit in litrizzv7-control.path litrizzv7-control.service; do
     sed -e "s|@APP_DIR@|$dir|g" -e "s|@APP_USER@|$user|g" "deploy/$unit.template" \
       | sudo tee "/etc/systemd/system/$unit" >/dev/null
   done
   sudo systemctl daemon-reload
-  sudo systemctl enable --now Litrizz-V7-control.path
+  sudo systemctl enable --now litrizzv7-control.path
   log "✅ controle remoto habilitado (.update / .rollback pelo WhatsApp)"
 }
 

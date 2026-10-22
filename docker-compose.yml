@@ -1,12 +1,12 @@
-name: Litrizz-V7
+name: litrizzv7
 services:
   bot:
     build:
       context: .
       args:
         GIT_COMMIT: ${GIT_COMMIT:-unknown}
-    image: Litrizz-V7:latest
-    container_name: Litrizz-V7
+    image: litrizzv7:latest
+    container_name: litrizzv7
     init: true
     restart: unless-stopped
     user: "${APP_UID:-1000}:${APP_GID:-1000}"
