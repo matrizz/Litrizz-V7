@@ -1,0 +1,11 @@
+[Unit]
+Description=Sticker bot - executa pedidos de controle
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=@APP_USER@
+WorkingDirectory=@APP_DIR@
+ExecStart=@APP_DIR@/ctl handle-requests
+TimeoutStartSec=900
